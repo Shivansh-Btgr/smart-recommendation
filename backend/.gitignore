@@ -1,0 +1,28 @@
+# Binaries
+/backend
+
+# Build and dependency directories
+/app
+/vendor/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Environment files
+.env
+
+# Database
+pgdata/
+
+# IDE/editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Docker
+*.pid

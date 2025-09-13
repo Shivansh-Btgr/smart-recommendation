@@ -1,0 +1,29 @@
+services:
+  db:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: qwerty
+      POSTGRES_DB: smartdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+  backend:
+    build: .
+    depends_on:
+      - db
+    environment:
+      DB_USER: postgres
+      DB_PASS: qwerty
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: smartdb
+      DB_SSLMODE: disable
+      ML_SERVICE_URL: http://mlservice:5000/recommend
+    ports:
+      - "8080:8080"
+    restart: always
+volumes:
+  pgdata:
